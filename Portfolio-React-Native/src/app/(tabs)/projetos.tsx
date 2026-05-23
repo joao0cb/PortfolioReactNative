@@ -50,12 +50,11 @@ export default function ProjetosScreen() {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.container}>
         <Text style={[styles.titulo, { color: colors.text }]}>Projetos</Text>
         <Text style={[styles.sub, { color: colors.textMuted }]}>
-          Uma seleção dos projetos que desenvolvi ao longo da minha jornada.
+          Uma selection dos projetos que desenvolvi ao longo da minha jornada.
         </Text>
 
         {PROJETOS.map(p => (
           <View key={p.nome} style={[styles.card, { backgroundColor: colors.backgroundCard }]}>
-            {/* Substitua a View vazia por isso: */}
             <View style={styles.imgPlaceholder}>
               <Image 
                 source={p.image} 
@@ -67,14 +66,26 @@ export default function ProjetosScreen() {
             <View style={styles.cardBody}>
               <Text style={[styles.cardNome, { color: colors.text }]}>{p.nome}</Text>
               <Text style={[styles.cardDesc, { color: colors.textSubtle }]}>{p.desc}</Text>
-              <Pressable
-                onPress={() => Linking.openURL(p.github)}
-                style={[styles.btnGithub, { borderColor: colors.primary }]}
-              >
-                <Text style={[styles.btnGithubText, { color: colors.primary }]}>
-                  Ver no GitHub →
-                </Text>
-              </Pressable>
+              <View style={styles.actionsContainer}>
+                <Pressable
+                  onPress={() => Linking.openURL(p.github)}
+                  style={[styles.btnGithub, { borderColor: colors.primary }]}
+                >
+                  <Text style={[styles.btnGithubText, { color: colors.primary }]}>
+                    GitHub →
+                  </Text>
+                </Pressable>
+                {p.link && (
+                  <Pressable
+                    onPress={() => Linking.openURL(p.link)}
+                    style={[styles.btnLink, { backgroundColor: colors.primary }]}
+                  >
+                    <Text style={styles.btnLinkText}>
+                      Acessar Web →
+                    </Text>
+                  </Pressable>
+                )}
+              </View>
             </View>
           </View>
         ))}
@@ -103,17 +114,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   img: { width: '100%', height: '100%' },
-  emoji: { fontSize: 56 },
   cardBody: { padding: 20, gap: 10 },
   cardNome: { fontSize: 18, fontFamily: 'Montserrat_700Bold' },
   cardDesc: { fontSize: 14, fontFamily: 'Montserrat_400Regular', lineHeight: 22 },
+  actionsContainer: {
+    flexDirection: 'row',
+    gap: 12,
+    marginTop: 8,
+  },
   btnGithub: {
     borderWidth: 1.5,
     borderRadius: 10,
     paddingVertical: 10,
-    paddingHorizontal: 20,
-    alignSelf: 'flex-start',
-    marginTop: 4,
+    paddingHorizontal: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
   },
-  btnGithubText: { fontSize: 14, fontFamily: 'Montserrat_700Bold' },
+  btnGithubText: { fontSize: 13, fontFamily: 'Montserrat_700Bold' },
+  btnLink: {
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  btnLinkText: { fontSize: 13, fontFamily: 'Montserrat_700Bold', color: '#FFFFFF' },
 })
