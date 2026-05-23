@@ -1,28 +1,23 @@
-// Tela nova (requisito do enunciado).
-// Preencha com seus dados reais nos arrays abaixo.
-
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useTheme } from '../../context/ThemeContext'
 
 const ACADEMICA = [
   {
-    instituicao: 'Universidade — Seu Nome Aqui',
+    instituicao: 'Universidade Católica de Pernambuco',
     curso: 'Bacharelado em Ciência da Computação',
-    periodo: '2023 – presente',
-    descricao: 'Cursando disciplinas de Algoritmos, Estruturas de Dados, Banco de Dados, POO, Redes e Sistemas Operacionais.',
+    periodo: '2024 - 2027',
+    descricao: 'Formação acadêmica voltada aos fundamentos teóricos e práticos da Ciência da Computação.',
   },
-  // Adicione mais se houver
 ]
 
 const PROFISSIONAL = [
   {
-    empresa: 'Empresa / Projeto',
-    cargo: 'Cargo ou função',
-    periodo: 'Mês/Ano – Mês/Ano',
-    descricao: 'Descrição das atividades, tecnologias usadas e impacto gerado.',
+    empresa: 'Lunio',
+    cargo: 'Estagiário de Observabilidade',
+    periodo: '04/2026 - atual',
+    descricao: 'Estágio técnico focado em observabilidade, monitoramento de sistemas e suporte à infraestrutura de rede.',
   },
-  // Adicione mais se houver
 ]
 
 function TimelineCard({
@@ -33,7 +28,6 @@ function TimelineCard({
   const { colors } = useTheme()
   return (
     <View style={styles.cardRow}>
-      {/* Linha vertical */}
       <View style={styles.timelineCol}>
         <View style={[styles.dot, { backgroundColor: cor }]} />
         <View style={[styles.line, { backgroundColor: colors.border || '#333' }]} />
@@ -79,13 +73,12 @@ export default function ExperienciaScreen() {
           />
         ))}
 
-        {/* Habilidades (migrado da seção Habilidades do portfólio web) */}
         <Text style={[styles.titulo, { color: colors.text, marginTop: 24 }]}>Habilidades</Text>
         {[
-          { titulo: 'Frontend', skills: ['React', 'TypeScript', 'Next.js', 'HTML', 'CSS'] },
+          { titulo: 'Frontend', skills: ['React', 'React Native', 'TypeScript', 'Next.js', 'HTML', 'CSS'] },
           { titulo: 'Backend', skills: ['Python', 'Django', 'FastAPI', 'Node.js'] },
           { titulo: 'Database', skills: ['PostgreSQL', 'MySQL'] },
-          { titulo: 'Tools', skills: ['Git', 'GitHub', 'Trello', 'Figma'] },
+          { titulo: 'Tools', skills: ['Git', 'GitHub', 'Trello', 'Zabbix', 'Grafana', 'Figma'] },
           { titulo: 'Languages', skills: ['Python', 'Java', 'C', 'Kotlin'] },
         ].map(grupo => (
           <View key={grupo.titulo} style={[styles.habCard, { backgroundColor: colors.backgroundCard }]}>

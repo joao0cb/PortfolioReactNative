@@ -17,7 +17,6 @@ export function CardProjeto({ nome, desc, github, emoji, image }: Props) {
       styles.card,
       { backgroundColor: colors.backgroundCard }
     ]}>
-      {/* Imagem ou placeholder */}
       <View style={styles.imgWrapper}>
         {image ? (
           <Image source={image} style={styles.img} resizeMode="cover" />

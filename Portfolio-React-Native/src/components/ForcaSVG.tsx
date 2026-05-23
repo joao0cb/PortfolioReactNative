@@ -1,7 +1,3 @@
-// ⚠️ INCOMPATIBILIDADE RESOLVIDA:
-// <svg> não funciona em React Native.
-// Usar react-native-svg: npx expo install react-native-svg
-
 import Svg, { Line, Circle } from 'react-native-svg'
 import { useTheme } from '../context/ThemeContext'
 

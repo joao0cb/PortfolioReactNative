@@ -1,14 +1,8 @@
-// ⚠️ INCOMPATIBILIDADES RESOLVIDAS:
-// 1. background-image → <ImageBackground> com imagem local
-// 2. position:fixed navbar → não necessária (Tab bar já navega)
-// 3. window.scrollY → removido (sem navbar dinâmica no mobile)
-// 4. Linking.openURL para mailto
-
 import { View, Text, ScrollView, StyleSheet, Image,
          ImageBackground, Pressable, Linking } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useTheme } from '../../context/ThemeContext'
-import { LinearGradient } from 'expo-linear-gradient'  // npx expo install expo-linear-gradient
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function HomeScreen() {
   const { colors, isDark, toggleTheme } = useTheme()
@@ -18,8 +12,6 @@ export default function HomeScreen() {
       style={{ backgroundColor: colors.background }}
       showsVerticalScrollIndicator={false}
     >
-      {/* ── HERO ── */}
-      {/* ⚠️ Substitua require() pela imagem real: require('../../assets/images/bg.png') */}
       <ImageBackground
         source={isDark
           ? require('../../assets/images/bgdark.png')
@@ -29,14 +21,12 @@ export default function HomeScreen() {
         resizeMode="cover"
       >
         <SafeAreaView edges={['top']}>
-          {/* Botão de tema */}
           <Pressable onPress={toggleTheme} style={styles.btnTema}>
             <Text style={styles.btnTemaText}>{isDark ? '☀️' : '🌙'}</Text>
           </Pressable>
         </SafeAreaView>
 
         <View style={styles.heroContent}>
-          {/* ⚠️ Substitua pela imagem real */}
           <View style={[styles.fotoWrapper, { borderColor: isDark ? '#17012b' : '#2c0b4c' }]}>
             <Image
               source={require('../../assets/images/fotojoao.jpg')}
@@ -52,7 +42,6 @@ export default function HomeScreen() {
         </View>
       </ImageBackground>
 
-      {/* ── CONTATO rápido ── */}
       <View style={[styles.section, { backgroundColor: colors.background }]}>
         <Text style={[styles.sectionTitle, { color: colors.text }]}>Vamos Conversar?</Text>
         <Text style={[styles.sectionSub, { color: colors.textMuted }]}>

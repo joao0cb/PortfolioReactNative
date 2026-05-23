@@ -1,8 +1,3 @@
-// ⚠️ INCOMPATIBILIDADE RESOLVIDA:
-// overflow-x: auto carrossel → ScrollView horizontal
-// display: grid 3 colunas no desktop → FlatList com numColumns={1} no mobile
-// <img> → <Image source={require(...)}>
-
 import { View, Text, ScrollView, Image, Pressable, Linking, StyleSheet } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useTheme } from '../../context/ThemeContext'
@@ -13,35 +8,30 @@ const PROJETOS = [
     desc: 'Plataforma de coleiras GPS para rastrear animais de rua em tempo real. Auxilia ONGs no monitoramento remoto e facilita o apadrinhamento financeiro e adoções. Conecta tecnologia ao cuidado animal para quem não tem espaço físico.',
     github: 'https://github.com/joao0cb/Patas-da-Rua',
     image: require('../../assets/images/patasnarua.png'),
-    emoji: '🐾',
   },
   {
     nome: 'Projeto Banco de Dados',
     desc: 'E-commerce de artigos esportivos com gestão dinâmica de vendas e produtos online. O sistema foca na eficiência do controle de estoque e na fluidez dos processos de compra, unindo alta performance e escalabilidade.',
     github: 'https://github.com/joao0cb/Projeto-Banco-De-Dados',
     image: require('../../assets/images/bdd.png'),
-    emoji: '🛒',
   },
   {
     nome: 'Coliceu',
     desc: 'Desenvolvido em Kotlin e Java, centraliza o registro arqueológico em campo. Permite mapeamento de sítios via imagens, marcação de pontos-zero e catalogação ágil de artefatos.',
     github: 'https://github.com/joao0cb/Projeto-Coliceu',
     image: require('../../assets/images/coliceu.jpeg'),
-    emoji: '🏛️',
   },
   {
     nome: 'Projeto Tabela Hash',
     desc: 'Sistema de gerenciamento de biblioteca em C com cadastro, empréstimo e devolução de livros. Utiliza tabelas hash para armazenar dados e arquivos binários para persistência.',
     github: 'https://github.com/joao0cb/Projeto-Tabela-Hash',
     image: require('../../assets/images/tabelahash.jpg'),
-    emoji: '📚',
   },
   {
     nome: 'Musicap',
     desc: 'Permite o cadastro de usuários para criação de bibliotecas e avaliação de canções. Ferramenta prática e intuitiva focada na organização de notas e críticas personalizadas.',
     github: 'https://github.com/joao0cb/Projeto-POO',
     image: require('../../assets/images/musicap.png'),
-    emoji: '🎵',
   },
 ]
 
@@ -58,10 +48,7 @@ export default function ProjetosScreen() {
 
         {PROJETOS.map(p => (
           <View key={p.nome} style={[styles.card, { backgroundColor: colors.backgroundCard }]}>
-            {/* Imagem do projeto */}
             <View style={styles.imgPlaceholder}>
-              {/* Se tiver imagem local, use: <Image source={p.image} style={styles.img} /> */}
-              <Text style={styles.emoji}>{p.emoji}</Text>
             </View>
 
             <View style={styles.cardBody}>

@@ -1,9 +1,6 @@
-// Tab bar com os 6 destinos exigidos.
-// ⚠️ ATENÇÃO: Ícones precisam de @expo/vector-icons (já vem no Expo).
-
 import { Tabs } from 'expo-router'
 import { useTheme } from '../../context/ThemeContext'
-import { Ionicons } from '@expo/vector-icons'
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function TabLayout() {
   const { colors, isDark } = useTheme()

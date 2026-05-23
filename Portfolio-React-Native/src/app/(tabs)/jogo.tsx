@@ -1,10 +1,3 @@
-// ⚠️ INCOMPATIBILIDADES RESOLVIDAS:
-// 1. <svg> → ForcaSVG com react-native-svg
-// 2. Teclado QWERTY → botões nativos com Pressable
-// 3. Modal overlay → Modal do React Native
-// 4. CSS animations → sem animação ou com Animated API (opcional)
-// 5. O jogo roda 100% nativo — sem link para web
-
 import { useState, useEffect, useCallback } from 'react'
 import {
   View, Text, Pressable, ScrollView, StyleSheet, Modal,
@@ -56,7 +49,6 @@ export default function JogoScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-      {/* Header */}
       <View style={[styles.header, { borderBottomColor: isDark ? '#222' : '#e0e0e0' }]}>
         <Text style={styles.headerTitulo}>Jogo da Forca</Text>
         <View style={styles.headerRight}>
@@ -71,14 +63,12 @@ export default function JogoScreen() {
       </View>
 
       <ScrollView contentContainerStyle={styles.main} showsVerticalScrollIndicator={false}>
-        {/* Desenho */}
         <ForcaSVG erros={erros} />
         <Text style={[styles.dica, { color: colors.textSubtle }]}>
           <Text style={{ color: '#9810fa', fontFamily: 'Montserrat_700Bold' }}>Dica: </Text>
           {dica}
         </Text>
 
-        {/* Palavra */}
         <View style={styles.palavraRow}>
           {palavraVisivel.map((letra, i) =>
             letra === ' ' ? (
@@ -102,7 +92,6 @@ export default function JogoScreen() {
           )}
         </View>
 
-        {/* Letras erradas */}
         <View style={styles.erradasSection}>
           <Text style={[styles.erradasLabel, { color: colors.textSubtle }]}>ERROS</Text>
           <View style={styles.erradasRow}>
@@ -117,7 +106,6 @@ export default function JogoScreen() {
           </View>
         </View>
 
-        {/* Teclado */}
         <View style={styles.teclado}>
           {TECLADO.map((linha, i) => (
             <View key={i} style={styles.tecladoLinha}>
@@ -154,7 +142,6 @@ export default function JogoScreen() {
         </View>
       </ScrollView>
 
-      {/* Modal de resultado */}
       <Modal visible={status !== 'jogando'} transparent animationType="fade">
         <View style={styles.overlay}>
           <View style={[
@@ -198,8 +185,6 @@ const styles = StyleSheet.create({
   headerTitulo: {
     fontSize: 20,
     fontFamily: 'Montserrat_700Bold',
-    // Gradiente em texto não funciona nativamente —
-    // ⚠️ Para gradiente: usar MaskedView + LinearGradient (opcional/avançado)
     color: '#9810fa',
   },
   headerRight: { flexDirection: 'row', alignItems: 'center', gap: 12 },

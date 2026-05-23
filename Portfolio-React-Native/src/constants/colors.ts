@@ -13,7 +13,7 @@ export const Colors = {
     cardBg: '#ffffff',
     skillBg: '#e8e9eb',
     skillText: '#6c0db0',
-    heroBg: '#1a0030',           // fallback sem imagem
+    heroBg: '#1a0030',
     contactOverlay: 'rgba(20,0,40,0.85)',
   },
   dark: {

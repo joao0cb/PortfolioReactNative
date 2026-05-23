@@ -1,7 +1,3 @@
-// ⚠️ INCOMPATIBILIDADE RESOLVIDA:
-// Web usava next/font. RN usa expo-font / @expo-google-fonts.
-// <html>, <body>, <head> não existem — usamos SafeAreaProvider + Stack do expo-router.
-
 import { useFonts, Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat'
 import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
@@ -26,7 +22,6 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <ThemeProvider>
-        {/* Stack sem header — cada tela cuida do próprio header */}
         <Stack screenOptions={{ headerShown: false }} />
       </ThemeProvider>
     </SafeAreaProvider>
