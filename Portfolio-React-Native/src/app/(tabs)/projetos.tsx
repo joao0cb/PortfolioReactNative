@@ -33,6 +33,13 @@ const PROJETOS = [
     github: 'https://github.com/joao0cb/Projeto-POO',
     image: require('../../assets/images/musicap.png'),
   },
+  {
+    nome: 'Awardly',
+    desc: 'Plataforma social para cinéfilos apaixonados pelo Oscar, registre filmes, avalie categorias, escreva reviews e conecte-se com amigos que compartilham do mesmo amor pelo cinema.',
+    github: 'https://github.com/joao0cb/Awardly',
+    image: require('../../assets/images/awardly.png'),
+    link: 'https://awardly-lime.vercel.app/',
+  },
 ]
 
 export default function ProjetosScreen() {
