@@ -36,19 +36,7 @@ const DESTAQUES: DestaquItem[] = [
   },
 ]
 
-const TECH_APP = [
-  { nome: 'React Native', desc: 'Framework para apps mobile nativos com JavaScript/TypeScript' },
-  { nome: 'Expo SDK 51', desc: 'Plataforma e toolchain que simplifica o desenvolvimento RN' },
-  { nome: 'Expo Router v3', desc: 'Roteamento baseado em arquivos (file-based routing) para RN' },
-  { nome: 'TypeScript', desc: 'Tipagem estática sobre JavaScript' },
-  { nome: 'react-native-svg', desc: 'Suporte a SVG no React Native (usado no jogo da forca)' },
-  { nome: 'expo-linear-gradient', desc: 'Gradientes lineares nativos' },
-  { nome: 'expo-font', desc: 'Carregamento de fontes customizadas (Montserrat)' },
-  { nome: 'expo-blur', desc: 'Efeito de blur/desfoque em elementos sobrepostos' },
-  { nome: 'expo-linking', desc: 'Deep links e abertura de URLs externas (mailto, GitHub...)' },
-  { nome: 'react-native-safe-area-context', desc: 'Respeita notch e barras do sistema operacional' },
-  { nome: '@expo/vector-icons', desc: 'Ícones para a tab bar e outros elementos' },
-]
+
 
 export default function SobreScreen() {
   const { colors, isDark } = useTheme()
@@ -88,30 +76,6 @@ export default function SobreScreen() {
               oportunidade de estágio para gerar impacto e crescer profissionalmente.
             </Text>
           </View>
-
-          <Text style={[styles.titulo, { color: colors.text, marginTop: 16 }]}>
-            Tecnologias deste App
-          </Text>
-          <Text style={[styles.subtitulo, { color: colors.textMuted }]}>
-            Módulos e bibliotecas utilizados para construir este portfólio React Native.
-          </Text>
-
-          {TECH_APP.map(t => (
-            <View
-              key={t.nome}
-              style={[styles.techCard, {
-                backgroundColor: colors.backgroundCard,
-                borderColor: isDark ? '#2c0b4c' : colors.border,
-              }]}
-            >
-              <View style={styles.techLeft}>
-                <View style={[styles.techDot, { backgroundColor: colors.primary }]} />
-                <Text style={[styles.techNome, { color: colors.primary }]}>{t.nome}</Text>
-              </View>
-              <Text style={[styles.techDesc, { color: colors.textMuted }]}>{t.desc}</Text>
-            </View>
-          ))}
-
         </View>
       </ScrollView>
     </SafeAreaView>

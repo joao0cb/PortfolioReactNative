@@ -48,7 +48,13 @@ export default function ProjetosScreen() {
 
         {PROJETOS.map(p => (
           <View key={p.nome} style={[styles.card, { backgroundColor: colors.backgroundCard }]}>
+            {/* Substitua a View vazia por isso: */}
             <View style={styles.imgPlaceholder}>
+              <Image 
+                source={p.image} 
+                style={styles.img} 
+                resizeMode="cover" 
+              />
             </View>
 
             <View style={styles.cardBody}>
