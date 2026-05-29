@@ -1,11 +1,32 @@
-import { View, Text, ScrollView, StyleSheet, Image,
-         ImageBackground, Pressable, Linking } from 'react-native'
+import React from 'react'
+import { View, Text, ScrollView, StyleSheet, Image, 
+         ImageBackground, Pressable, Linking, Alert } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useTheme } from '../../context/ThemeContext'
-import { LinearGradient } from 'expo-linear-gradient'
+import { Asset } from 'expo-asset'
+import * as Sharing from 'expo-sharing'
 
 export default function HomeScreen() {
   const { colors, isDark, toggleTheme } = useTheme()
+
+  const abrirCurriculo = async () => {
+    try {
+      const asset = await Asset.loadAsync(require('../../assets/Curriculo.pdf'))
+      const uri = asset[0].localUri || asset[0].uri
+      
+      if (await Sharing.isAvailableAsync()) {
+        await Sharing.shareAsync(uri, {
+          mimeType: 'application/pdf',
+          dialogTitle: 'Abrir Currículo',
+        })
+      } else {
+        Alert.alert('Erro', 'O compartilhamento não está disponível neste dispositivo.')
+      }
+    } catch (error) {
+      console.error('Erro ao abrir o currículo:', error)
+      Alert.alert('Erro', 'Não foi possível carregar o arquivo PDF.')
+    }
+  }
 
   return (
     <ScrollView
@@ -13,8 +34,8 @@ export default function HomeScreen() {
       showsVerticalScrollIndicator={false}
     >
       <ImageBackground
-        source={isDark
-          ? require('../../assets/images/bgdark.png')
+        source={isDark 
+          ? require('../../assets/images/bgdark.png') 
           : require('../../assets/images/bg.png')
         }
         style={styles.hero}
@@ -28,15 +49,15 @@ export default function HomeScreen() {
 
         <View style={styles.heroContent}>
           <View style={[styles.fotoWrapper, { borderColor: isDark ? '#17012b' : '#2c0b4c' }]}>
-            <Image
-              source={require('../../assets/images/fotojoao.jpg')}
-              style={styles.foto}
+            <Image 
+              source={require('../../assets/images/fotojoao.jpg')} 
+              style={styles.foto} 
             />
           </View>
           <Text style={styles.heroNome}>João Victor</Text>
           <Text style={styles.heroDesc}>Estudante de Ciência da Computação</Text>
           <Text style={styles.heroBio}>
-            Sempre aprendendo e construindo. Transformando ideias em software
+            Sempre aprendendo e construindo. Transformando ideias em software 
             e buscando novas formas de resolver desafios reais.
           </Text>
         </View>
@@ -48,7 +69,7 @@ export default function HomeScreen() {
           Estou sempre aberto a novos projetos e oportunidades.
         </Text>
 
-        <Pressable
+        <Pressable 
           onPress={() => Linking.openURL('mailto:joaovictorcastelobranco123@gmail.com')}
           style={[styles.btnEmail, { backgroundColor: colors.primary }]}
         >
@@ -59,12 +80,12 @@ export default function HomeScreen() {
           <Pressable onPress={() => Linking.openURL('https://github.com/joao0cb')}>
             <Text style={[styles.linkText, { color: colors.primary }]}>GitHub</Text>
           </Pressable>
-          <Pressable onPress={() =>
+          <Pressable onPress={() => 
             Linking.openURL('https://www.linkedin.com/in/jo%C3%A3o-victor-castelo-branco-de-sena-20b624312/')
           }>
             <Text style={[styles.linkText, { color: colors.primary }]}>LinkedIn</Text>
           </Pressable>
-          <Pressable onPress={() => Linking.openURL('https://seusite.com/CurriculoJOAO.pdf')}>
+          <Pressable onPress={abrirCurriculo}>
             <Text style={[styles.linkText, { color: colors.primary }]}>Currículo PDF</Text>
           </Pressable>
         </View>
