@@ -11,16 +11,17 @@ export default function HomeScreen() {
 
   const abrirCurriculo = async () => {
     try {
-      const asset = await Asset.loadAsync(require('../../assets/CurriculoJOAO.pdf'))
-      const uri = asset[0].localUri || asset[0].uri
-      
+      const asset = Asset.fromModule(require('../../assets/CurriculoJOAO.pdf'))
+      await asset.downloadAsync()
+
       if (await Sharing.isAvailableAsync()) {
-        await Sharing.shareAsync(uri, {
+        await Sharing.shareAsync(asset.localUri!, {
           mimeType: 'application/pdf',
           dialogTitle: 'Abrir Currículo',
+          UTI: 'com.adobe.pdf',
         })
       } else {
-        Alert.alert('Erro', 'O compartilhamento não está disponível neste dispositivo.')
+        Alert.alert('Erro', 'Compartilhamento não disponível neste dispositivo.')
       }
     } catch (error) {
       console.error('Erro ao abrir o currículo:', error)

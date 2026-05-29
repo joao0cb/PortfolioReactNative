@@ -8,6 +8,9 @@
     "icon": "./assets/images/icon.png",
     "scheme": "portfolioreactnative",
     "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": [
+      "assets/**"
+    ],
     "ios": {
       "icon": "./assets/expo.icon"
     },
