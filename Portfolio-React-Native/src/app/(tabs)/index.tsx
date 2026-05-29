@@ -11,7 +11,7 @@ export default function HomeScreen() {
 
   const abrirCurriculo = async () => {
     try {
-      const asset = await Asset.loadAsync(require('../../assets/Curriculo.pdf'))
+      const asset = await Asset.loadAsync(require('../../assets/CurriculoJOAO.pdf'))
       const uri = asset[0].localUri || asset[0].uri
       
       if (await Sharing.isAvailableAsync()) {
