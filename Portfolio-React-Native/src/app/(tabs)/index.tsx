@@ -3,31 +3,9 @@ import { View, Text, ScrollView, StyleSheet, Image,
          ImageBackground, Pressable, Linking, Alert } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useTheme } from '../../context/ThemeContext'
-import { Asset } from 'expo-asset'
-import * as Sharing from 'expo-sharing'
 
 export default function HomeScreen() {
   const { colors, isDark, toggleTheme } = useTheme()
-
-  const abrirCurriculo = async () => {
-    try {
-      const asset = Asset.fromModule(require('../../assets/CurriculoJOAO.pdf'))
-      await asset.downloadAsync()
-
-      if (await Sharing.isAvailableAsync()) {
-        await Sharing.shareAsync(asset.localUri!, {
-          mimeType: 'application/pdf',
-          dialogTitle: 'Abrir Currículo',
-          UTI: 'com.adobe.pdf',
-        })
-      } else {
-        Alert.alert('Erro', 'Compartilhamento não disponível neste dispositivo.')
-      }
-    } catch (error) {
-      console.error('Erro ao abrir o currículo:', error)
-      Alert.alert('Erro', 'Não foi possível carregar o arquivo PDF.')
-    }
-  }
 
   return (
     <ScrollView
@@ -85,9 +63,6 @@ export default function HomeScreen() {
             Linking.openURL('https://www.linkedin.com/in/jo%C3%A3o-victor-castelo-branco-de-sena-20b624312/')
           }>
             <Text style={[styles.linkText, { color: colors.primary }]}>LinkedIn</Text>
-          </Pressable>
-          <Pressable onPress={abrirCurriculo}>
-            <Text style={[styles.linkText, { color: colors.primary }]}>Currículo PDF</Text>
           </Pressable>
         </View>
       </View>
